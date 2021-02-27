@@ -15,27 +15,6 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 
-class FakeUIProductDetailMapper: ObjectMapper<ProductDetail, ProductDetailUIItem> {
-    override fun mapFromOriginalObject(originalObject: ProductDetail): ProductDetailUIItem {
-        return ProductDetailUIItem(
-            id = originalObject.id,
-            name = originalObject.name,
-            brand = originalObject.brand,
-            price = originalObject.price,
-            currency = originalObject.currency,
-            image = originalObject.image,
-            link = originalObject._link,
-            type = originalObject._type,
-            cardBackground = 0,
-            width = 0,
-            height = 0,
-            description = originalObject.description,
-            discountPercentage = originalObject.discountPercentage,
-            stock = originalObject.stock
-        )
-    }
-}
-
 class GetProductDetailByIdUseCaseTest {
 
     private val productRepository: ProductRepository = mock()

@@ -9,11 +9,11 @@ import com.mayandro.utility.PRODUCT_START_PAGING_INDEX
 import com.mayandro.utility.exceptions.NetworkFailureException
 import com.mayandro.utility.network.NetworkStatus
 import java.lang.NullPointerException
-import javax.inject.Named
+import javax.inject.Inject
 
-class ProductPagingSource (
+class ProductPagingSource @Inject constructor(
     private val dataSourceFactory: DataSourceFactory,
-    @Named("UIProductListMapper") private val uiProductListMapper: UIProductListMapper
+    private val uiProductListMapper: UIProductListMapper
 ): PagingSource<Int, ProductUIItem>(), PagerSource {
     override fun getRefreshKey(state: PagingState<Int, ProductUIItem>): Int? {
         return null
