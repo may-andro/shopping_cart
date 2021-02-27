@@ -45,7 +45,7 @@ ext {
 
     androidxCoreTestingVersion = '2.1.0'
     truthVersion = '1.1'
-    mockitoVersion = '3.5.13'
+    mockitoKotlinVersion = '2.2.0'
 
     //Development
     leakCanaryVersion = '1.3.1'
@@ -110,7 +110,7 @@ ext {
     testDependencies = [
             junit:             "junit:junit:${jUnitVersion}",
             truth:             "com.google.truth:truth:${truthVersion}",
-            mockito:            "org.mockito:mockito-core:${mockitoVersion}",
+            mockito:            "com.nhaarman.mockitokotlin2:mockito-kotlin:${mockitoKotlinVersion}",
     ]
 
     androidTestDependencies = [
