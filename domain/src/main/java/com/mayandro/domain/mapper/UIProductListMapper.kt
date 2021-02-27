@@ -5,7 +5,7 @@ import com.mayandro.remote.model.ProductItem
 import com.mayandro.remote.model.ProductResponse
 import javax.inject.Inject
 
-class UIProductListMapper: ObjectMapper<ProductResponse, List<ProductUIItem>> {
+class UIProductListMapper @Inject constructor(): ObjectMapper<ProductResponse, List<ProductUIItem>>() {
     override fun mapFromOriginalObject(originalObject: ProductResponse): List<ProductUIItem> {
         return originalObject.list.toProductUIList()
     }

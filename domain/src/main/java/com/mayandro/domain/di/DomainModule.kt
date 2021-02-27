@@ -24,20 +24,6 @@ import javax.inject.Singleton
 object DomainModule {
     @Provides
     @Singleton
-    @Named("UIProductDetailMapper")
-    fun provideUIProductDetailMapper(): ObjectMapper<ProductDetail, ProductDetailUIItem> {
-        return UIProductDetailMapper()
-    }
-
-    @Provides
-    @Singleton
-    @Named("UIProductListMapper")
-    fun provideUIProductListMapper(): ObjectMapper<ProductResponse, List<ProductUIItem>> {
-        return UIProductListMapper()
-    }
-
-    @Provides
-    @Singleton
     fun provideProductPagingSource(
         dataSourceFactory: DataSourceFactory,
         uiProductListMapper: UIProductListMapper

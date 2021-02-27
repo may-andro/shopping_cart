@@ -4,7 +4,7 @@ import com.mayandro.domain.uimodel.ProductDetailUIItem
 import com.mayandro.remote.model.ProductDetail
 import javax.inject.Inject
 
-class UIProductDetailMapper: ObjectMapper<ProductDetail, ProductDetailUIItem>  {
+class UIProductDetailMapper @Inject constructor(): ObjectMapper<ProductDetail, ProductDetailUIItem>()  {
     override fun mapFromOriginalObject(originalObject: ProductDetail): ProductDetailUIItem {
         return originalObject.toProductDetailUIItem()
     }
