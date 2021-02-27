@@ -43,9 +43,6 @@ dependencies {
     implementation kotlinDependencies.kotlin
     implementation kotlinDependencies.coroutines
 
-    def testDependencies = rootProject.ext.testDependencies
-    testImplementation testDependencies.junit
-
     def hiltDependencies = rootProject.ext.hiltDependencies
     implementation hiltDependencies.hilt
     kapt hiltDependencies.daggerHiltCompiler
@@ -53,7 +50,20 @@ dependencies {
     def pagerDependencies = rootProject.ext.pagerDependencies
     implementation pagerDependencies.paging
 
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    def testDependencies = rootProject.ext.testDependencies
+    testImplementation testDependencies.junit
+    testImplementation testDependencies.truth
+    testImplementation testDependencies.mockito
+
+    def androidTestDependencies = rootProject.ext.androidTestDependencies
+    androidTestImplementation androidTestDependencies.junit
+    androidTestImplementation androidTestDependencies.espresso
+    androidTestImplementation androidTestDependencies.hilt
+    kaptAndroidTest androidTestDependencies.hiltComplier
+
+    androidTestImplementation androidTestDependencies.androidxCoreTesting
+    androidTestImplementation androidTestDependencies.coroutineTest
+    androidTestImplementation androidTestDependencies.truth
+
+    testImplementation "app.cash.turbine:turbine:0.4.0"
 }
