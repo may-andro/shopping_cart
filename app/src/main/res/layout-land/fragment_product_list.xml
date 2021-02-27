@@ -2,9 +2,9 @@
 <androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/motionLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/motionLayout"
     android:background="@color/backgroundGrey"
     app:layoutDescription="@xml/fragment_product_list_scene">
 
@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.35" />
+        app:layout_constraintGuide_percent="0.4" />
 
     <TextView
         android:id="@+id/textViewLabel"
@@ -52,7 +52,8 @@
         app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
         app:layout_constraintHeight_percent="0.1"
         app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
-        app:layout_constraintTop_toBottomOf="@id/guidelineFivePercent" />
+        app:layout_constraintTop_toBottomOf="@id/guidelineFivePercent"
+        android:visibility="gone"/>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardProfileImageContainer"
@@ -61,11 +62,10 @@
         android:elevation="16sp"
         app:cardCornerRadius="160dp"
         app:cardElevation="16dp"
-        app:layout_constraintBottom_toBottomOf="@id/textViewLabel"
+        app:layout_constraintBottom_toBottomOf="@+id/searchView"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
-        app:layout_constraintHeight_percent="0.1"
-        app:layout_constraintTop_toTopOf="@id/textViewLabel">
+        app:layout_constraintStart_toEndOf="@id/guidelineLeft"
+        app:layout_constraintTop_toTopOf="@id/searchView">
 
         <ImageView
             android:id="@+id/cardImage"
@@ -83,13 +83,14 @@
         android:layout_height="0dp"
         android:layout_marginVertical="16dp"
         android:background="@drawable/bg_search_rounded"
-        android:elevation="8dp"
         android:orientation="horizontal"
+        android:elevation="8dp"
+        android:layout_marginStart="24sp"
         app:layout_constraintBottom_toTopOf="@id/layoutChips"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.075"
-        app:layout_constraintStart_toEndOf="@id/guidelineLeft"
-        app:layout_constraintTop_toBottomOf="@id/textViewLabel">
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintStart_toEndOf="@id/cardProfileImageContainer"
+        app:layout_constraintTop_toBottomOf="@id/guidelineFivePercent">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="24dp"
@@ -103,12 +104,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
+            android:maxLines="1"
             android:autoSizeMaxTextSize="18sp"
             android:autoSizeMinTextSize="14sp"
             android:autoSizeStepGranularity="2sp"
             android:autoSizeTextType="uniform"
             android:gravity="center_vertical"
-            android:maxLines="1"
             android:text="Search here ..." />
     </LinearLayout>
 
@@ -116,13 +117,13 @@
         android:id="@+id/layoutChips"
         layout="@layout/layout_chips"
         android:layout_width="0dp"
+        android:elevation="12dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:elevation="12dp"
+        app:layout_constraintTop_toBottomOf="@id/searchView"
         app:layout_constraintBottom_toTopOf="@id/guidelineFortyPercent"
         app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
-        app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
-        app:layout_constraintTop_toBottomOf="@id/searchView" />
+        app:layout_constraintStart_toStartOf="@+id/guidelineLeft" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -178,6 +179,4 @@
         app:layout_constraintWidth_percent="0.7"
         tools:text="Testing text"
         tools:visibility="visible" />
-
-
 </androidx.constraintlayout.motion.widget.MotionLayout>

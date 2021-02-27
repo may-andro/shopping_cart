@@ -28,7 +28,8 @@ class ProductRepositoryImpl (
             PagingConfig(
                 pageSize = pageSize,
                 maxSize = 100,
-                enablePlaceholders = false
+                enablePlaceholders = false,
+                initialLoadSize = pageSize
             )
         ) {
             productPagingSource as ProductPagingSource

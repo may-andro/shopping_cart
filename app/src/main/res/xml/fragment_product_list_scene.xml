@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        app:constraintSetEnd="@layout/fragment_product_list_end"
+        app:constraintSetStart="@layout/fragment_product_list">
+
+        <OnSwipe
+            app:dragDirection="dragUp"
+            app:touchAnchorId="@id/recyclerView"
+            app:touchAnchorSide="top" />
+
+        <KeyFrameSet>
+
+            //PROFILE IMAGE
+            <KeyAttribute
+                android:alpha="1"
+                app:framePosition="0"
+                app:motionTarget="@id/cardProfileImageContainer" />
+
+            <KeyAttribute
+                android:alpha="0.5"
+                app:framePosition="10"
+                app:motionTarget="@id/cardProfileImageContainer" />
+
+            <KeyAttribute
+                android:alpha="0"
+                app:framePosition="20"
+                app:motionTarget="@id/cardProfileImageContainer" />
+
+            <KeyAttribute
+                android:alpha="0"
+                app:framePosition="100"
+                app:motionTarget="@id/cardProfileImageContainer" />
+        </KeyFrameSet>
+
+        <KeyFrameSet>
+            //TEXT LABEL IMAGE
+            <KeyAttribute
+                android:alpha="1"
+                app:framePosition="0"
+                app:motionTarget="@id/textViewLabel" />
+
+            <KeyAttribute
+                android:alpha="0.5"
+                app:framePosition="10"
+                app:motionTarget="@id/textViewLabel" />
+
+            <KeyAttribute
+                android:alpha="0"
+                app:framePosition="20"
+                app:motionTarget="@id/textViewLabel" />
+
+            <KeyAttribute
+                android:alpha="0"
+                app:framePosition="100"
+                app:motionTarget="@id/textViewLabel" />
+        </KeyFrameSet>
+    </Transition>
+</MotionScene>
