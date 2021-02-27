@@ -1,3 +1,51 @@
 <resources>
     <string name="app_name">ShoppingCart</string>
+
+
+    <string name="dashboard_title">The most popular \ncloths today</string>
+
+    <string name="out_of_stock">Out Of Stock</string>
+    <string name="notify_me_when_available">Notify me when available</string>
+    <string name="add_to_cart">Add To Cart</string>
+
+    <string name="close">Close</string>
+
+    <string name="coming_soon">Coming Soon...</string>
+    <string name="coming_soon_message">This feature is not implemented yet. Stay tuned, it\'s coming soon</string>
+
+    <string name="dummy_text">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+        Lorem Ipsum has been the industry standard filler text since the 1500s, when an unknown printer used a gallery of texts and mixed them in such a way that he managed to make a textbook specimen.
+        Not only did it survive 500 years, but it also entered as filler text in electronic documents, remaining essentially the same as the original.
+        It was popularized in the 1960s with the creation of the Letraset sheets, which contained passages from Lorem Ipsum, and more recently with desktop publishing software, such as Aldus PageMaker, which includes versions of Lorem Ipsum.
+        Contrary to popular thought, Lorem Ipsums text is not simply random text.
+        It has its roots in a classic piece of Latin literature, dating from 45 BC, making it more than 2000 years old.
+        Richard McClintock, a professor of Latin at the University of Hampden-Sydney in Virginia, found one of the darkest words in the Latin language, consecteur, in a passage from Lorem Ipsum, and as he continued to read different Latin texts, discovered the undoubted source.
+        Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finnibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC.
+        This book is a treatise on the theory of ethics, very popular during the Renaissance.
+        The first line of the Lorem Ipsum, The standard Lorem Ipsum chunk of text used since 1500 is reproduced below for those interested.
+        Sections 1.10.32 and 1.10.33 of Ciceros de Finibus Bonorum et Malorum are also reproduced in their exact original form, accompanied by English versions of the 1914 translation by H. Rackham.
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+        Lorem Ipsum has been the industry standard filler text since the 1500s, when an unknown printer used a gallery of texts and mixed them in such a way that he managed to make a textbook specimen.
+        Not only did it survive 500 years, but it also entered as filler text in electronic documents, remaining essentially the same as the original.
+        It was popularized in the 1960s with the creation of the Letraset sheets, which contained passages from Lorem Ipsum, and more recently with desktop publishing software, such as Aldus PageMaker, which includes versions of Lorem Ipsum.
+        Contrary to popular thought, Lorem Ipsums text is not simply random text.
+        It has its roots in a classic piece of Latin literature, dating from 45 BC, making it more than 2000 years old.
+        Richard McClintock, a professor of Latin at the University of Hampden-Sydney in Virginia, found one of the darkest words in the Latin language, consecteur, in a passage from Lorem Ipsum, and as he continued to read different Latin texts, discovered the undoubted source.
+        Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finnibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC.
+        This book is a treatise on the theory of ethics, very popular during the Renaissance.
+        The first line of the Lorem Ipsum, The standard Lorem Ipsum chunk of text used since 1500 is reproduced below for those interested.
+        Sections 1.10.32 and 1.10.33 of Ciceros de Finibus Bonorum et Malorum are also reproduced in their exact original form, accompanied by English versions of the 1914 translation by H. Rackham.
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+        Lorem Ipsum has been the industry standard filler text since the 1500s, when an unknown printer used a gallery of texts and mixed them in such a way that he managed to make a textbook specimen.
+        Not only did it survive 500 years, but it also entered as filler text in electronic documents, remaining essentially the same as the original.
+        It was popularized in the 1960s with the creation of the Letraset sheets, which contained passages from Lorem Ipsum, and more recently with desktop publishing software, such as Aldus PageMaker, which includes versions of Lorem Ipsum.
+        Contrary to popular thought, Lorem Ipsums text is not simply random text.
+        It has its roots in a classic piece of Latin literature, dating from 45 BC, making it more than 2000 years old.
+        Richard McClintock, a professor of Latin at the University of Hampden-Sydney in Virginia, found one of the darkest words in the Latin language, consecteur, in a passage from Lorem Ipsum, and as he continued to read different Latin texts, discovered the undoubted source.
+        Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finnibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC.
+        This book is a treatise on the theory of ethics, very popular during the Renaissance.
+        The first line of the Lorem Ipsum, The standard Lorem Ipsum chunk of text used since 1500 is reproduced below for those interested.
+        Sections 1.10.32 and 1.10.33 of Ciceros de Finibus Bonorum et Malorum are also reproduced in their exact original form, accompanied by English versions of the 1914 translation by H. Rackham.
+    </string>
 </resources>
