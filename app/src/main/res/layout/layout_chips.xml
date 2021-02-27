@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView
+    android:id="@+id/chipGroupContiner"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:singleLine="true"
+        >
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipShirt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Shirts"
+            android:textAppearance="@style/TextAppearance.AppCompat.Menu"
+            android:textStyle="bold"
+            app:chipBackgroundColor="@color/screenBackgroundWhite"
+            />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipJeans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jeans"
+            android:textAppearance="@style/TextAppearance.AppCompat.Menu"
+            android:textStyle="bold"
+            app:chipBackgroundColor="@color/screenBackgroundWhite"
+            />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipHats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hats"
+            android:textAppearance="@style/TextAppearance.AppCompat.Menu"
+            android:textStyle="bold"
+            app:chipBackgroundColor="@color/screenBackgroundWhite"
+            />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipTshirt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="T-Shirts"
+            android:textAppearance="@style/TextAppearance.AppCompat.Menu"
+            android:textStyle="bold"
+            app:chipBackgroundColor="@color/screenBackgroundWhite"
+            />
+    </com.google.android.material.chip.ChipGroup>
+</HorizontalScrollView>
