@@ -2,6 +2,7 @@ plugins {
     id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -14,7 +15,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.clintpauldev.daggerhiltinstrumentationtestingexample.HiltTestRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
 
@@ -37,6 +38,7 @@ dependencies {
     def kotlinDependencies = rootProject.ext.kotlinDependencies
     implementation kotlinDependencies.kotlin
     implementation kotlinDependencies.coroutines
+    implementation kotlinDependencies.coroutinesCore
 
     def dbDependencies = rootProject.ext.dbDependencies
     implementation dbDependencies.room
@@ -51,6 +53,14 @@ dependencies {
     kapt hiltDependencies.hiltCompiler
 
     testImplementation 'junit:junit:4.13.2'
+    testImplementation "com.google.truth:truth:1.1"
+
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestImplementation 'com.google.dagger:hilt-android-testing:2.28-alpha'
+    kaptAndroidTest 'com.google.dagger:hilt-android-compiler:2.28-alpha'
+    androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.2.1"
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation "com.google.truth:truth:1.1"
 }
