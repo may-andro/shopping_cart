@@ -1,0 +1,119 @@
+ext {
+    //Android
+    androidBuildToolsVersion = "29.0.3"
+    androidMinSdkVersion = 23
+    androidTargetSdkVersion = 29
+    androidCompileSdkVersion = 29
+
+    //Kotlin
+    kotlinVersion = '1.4.30'
+    coroutinesVersion = '1.4.1'
+    ktxVersion = '1.3.2'
+
+    //Retrofit
+    gsonVersion = '2.8.6'
+    okHttpVersion = '3.12.0'
+    retrofitVersion = '2.9.0'
+
+    //Room
+    roomVersion = '2.2.6'
+
+    //Hilt
+    hiltVersion = '2.32-alpha'
+    hiltViewModelVersion = '1.0.0-alpha03'
+
+    //Android Library
+    appCompatVersion = '1.2.0'
+    materialVersion = '1.4.0-alpha01'
+    constraintLayoutVersion = '2.0.4'
+
+    //Android Lifecycle
+    lifeCycleVersion = '2.3.0'
+
+    //Navigation
+    navigationVersion = '2.3.3'
+
+    //Glide
+    glideVersion = '4.12.0'
+
+    //Glide
+    pagingVersion = '3.0.0-beta01'
+
+    //Testing
+    jUnitVersion = '4.13.2'
+    espressoVersion = '3.3.0'
+
+    robolectricVersion = '3.1.1'
+    assertJVersion = '1.7.1'
+    mockitoVersion = '1.9.5'
+    dexmakerVersion = '1.0'
+    testingSupportLibVersion = '0.1'
+
+    //Development
+    leakCanaryVersion = '1.3.1'
+
+    kotlinDependencies = [
+            kotlin:             "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}",
+            coroutines:         "org.jetbrains.kotlinx:kotlinx-coroutines-android:${coroutinesVersion}",
+            ktx:                "androidx.core:core-ktx:${ktxVersion}"
+    ]
+
+    dbDependencies = [
+            room:             "androidx.room:room-runtime:${roomVersion}",
+            roomKtx:          "androidx.room:room-ktx:${roomVersion}",
+            roomCompiler:     "androidx.room:room-compiler:${roomVersion}"
+    ]
+
+    networkDependencies = [
+            gson:                "com.google.code.gson:gson:${gsonVersion}",
+            loggingInterceptor:  "com.squareup.okhttp3:logging-interceptor:${okHttpVersion}",
+            retrofit:            "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            retrofitConverter:   "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+    ]
+
+    hiltDependencies = [
+            hilt:                "com.google.dagger:hilt-android:${hiltVersion}",
+            hiltLifecycle:       "androidx.hilt:hilt-lifecycle-viewmodel:${hiltViewModelVersion}",
+            hiltCompiler:        "androidx.hilt:hilt-compiler:${hiltViewModelVersion}",
+            daggerHiltCompiler:   "com.google.dagger:hilt-compiler:${hiltVersion}",
+    ]
+
+    androidDependencies = [
+            appcompat:              "androidx.appcompat:appcompat:${appCompatVersion}",
+            constraintlayout:       "androidx.constraintlayout:constraintlayout:${constraintLayoutVersion}",
+            material:               "com.google.android.material:material:${materialVersion}",
+            palette:                "androidx.palette:palette:1.0.0"
+    ]
+
+    lifecycleDependencies = [
+            lifecycleViewmodelKtx:             "androidx.lifecycle:lifecycle-viewmodel-ktx:${lifeCycleVersion}",
+            lifecycleLivedataKtx:              "androidx.lifecycle:lifecycle-livedata-ktx:${lifeCycleVersion}",
+            lifecycleViewmodelSavedState:      "androidx.lifecycle:lifecycle-viewmodel-savedstate:${lifeCycleVersion}",
+    ]
+
+    navigationDependencies = [
+            navigationFragment:           "androidx.navigation:navigation-fragment-ktx:${navigationVersion}",
+            navigationUiKtx:              "androidx.navigation:navigation-ui-ktx:${navigationVersion}",
+            navigationDynamicFeatures:    "androidx.navigation:navigation-dynamic-features-fragment:${navigationVersion}",
+            navigationTesting:            "androidx.navigation:navigation-testing:${navigationVersion}",
+    ]
+
+    glideDependencies = [
+            glide:             "com.github.bumptech.glide:glide:$glideVersion",
+            glideCompiler:         "'com.github.bumptech.glide:compiler:$glideVersion"
+    ]
+
+    pagerDependencies = [
+            paging:             "androidx.paging:paging-runtime:$pagingVersion",
+            pagingTest:         "androidx.paging:paging-common:$pagingVersion"
+    ]
+
+    testDependencies = [
+            junit:             "junit:junit:${jUnitVersion}",
+    ]
+
+    androidTestDependencies = [
+            junit:            "androidx.test.ext:junit:1.1.2",
+            espresso:               "androidx.test.espresso:espresso-core:${espressoVersion}",
+    ]
+}

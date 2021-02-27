@@ -1,2 +1,7 @@
+include ':remote'
+include ':local'
+include ':utility'
+include ':domain'
+include ':data'
 include ':app'
 rootProject.name = "ShoppingCart"
