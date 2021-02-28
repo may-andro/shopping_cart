@@ -16,7 +16,7 @@ ext {
     retrofitVersion = '2.9.0'
 
     //Room
-    roomVersion = '2.2.6'
+    roomVersion = '2.3.0-alpha02'
 
     //Hilt
     hiltVersion = '2.32-alpha'

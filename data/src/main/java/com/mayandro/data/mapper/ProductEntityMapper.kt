@@ -1,29 +1,28 @@
-package com.mayandro.domain.mapper
+package com.mayandro.data.mapper
 
-import com.mayandro.domain.uimodel.ProductUIItem
+import com.mayandro.local.entity.ProductEntity
 import com.mayandro.remote.model.ProductItem
 import com.mayandro.remote.model.ProductResponse
+import com.mayandro.utility.mapper.ObjectMapper
 import javax.inject.Inject
 
-class UIProductListMapper @Inject constructor() :
-    ObjectMapper<ProductResponse, List<ProductUIItem>>() {
-    override fun mapFromOriginalObject(originalObject: ProductResponse): List<ProductUIItem> {
-        return originalObject.list.toProductUIList()
+class ProductEntityMapper @Inject constructor(): ObjectMapper<ProductResponse, List<ProductEntity>>() {
+    override fun mapFromOriginalObject(originalObject: ProductResponse): List<ProductEntity> {
+        return originalObject.list.toProductEntityList()
     }
 
 }
 
-fun List<ProductItem>.toProductUIList(): List<ProductUIItem> {
+fun List<ProductItem>.toProductEntityList(): List<ProductEntity> {
     return this.map {
-        it.toProductUIItem()
+        it.toProductEntity()
     }
 
 }
 
-
-fun ProductItem.toProductUIItem(): ProductUIItem {
-    var width: Int
-    var height: Int
+fun ProductItem.toProductEntity(): ProductEntity {
+    val width: Int
+    val height: Int
     when (this.name) {
         "shoes" -> {
             width = 770
@@ -50,7 +49,7 @@ fun ProductItem.toProductUIItem(): ProductUIItem {
             height = 0
         }
     }
-    return ProductUIItem(
+    return ProductEntity(
         id,
         name,
         brand,
@@ -59,8 +58,7 @@ fun ProductItem.toProductUIItem(): ProductUIItem {
         image,
         _link,
         _type,
-        0,
-        width,
-        height
+        height,
+        width
     )
 }

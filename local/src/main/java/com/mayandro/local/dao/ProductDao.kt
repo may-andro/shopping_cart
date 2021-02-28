@@ -1,5 +1,6 @@
 package com.mayandro.local.dao
 
+import androidx.paging.PagingSource
 import androidx.room.*
 import com.mayandro.local.entity.ProductEntity
 import com.mayandro.local.utils.DbConstants
@@ -7,13 +8,20 @@ import com.mayandro.local.utils.DbConstants
 @Dao
 interface ProductDao{
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertProduct(productEntity: ProductEntity)
+    suspend fun insertProduct(productEntity: List<ProductEntity>)
 
     @Update
     suspend fun updateProduct(productEntity: ProductEntity)
 
     @Query(DbConstants.QUERY_GET_ALL_PRODUCTS)
     suspend fun getAllProduct(): List<ProductEntity>
+
+
+
+
+
+    @Query(DbConstants.QUERY_GET_ALL_PRODUCTS)
+    fun getAllPagedProduct(): PagingSource<Int, ProductEntity>
 
     @Query(DbConstants.QUERY_GET_PRODUCT_BY_ID)
     suspend fun getProductById(id: String): ProductEntity?

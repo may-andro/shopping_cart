@@ -9,22 +9,31 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
-import com.mayandro.domain.uimodel.ProductUIItem
+import com.mayandro.local.entity.ProductEntity
 import com.mayandro.shoppingcart.R
 import com.mayandro.shoppingcart.databinding.ItemProductsBinding
 
-class ProductPagerAdapter: PagingDataAdapter<ProductUIItem, ProductPagerAdapter.ViewHolder>(ProductComparator) {
+class ProductPagerAdapter: PagingDataAdapter<ProductEntity, ProductPagerAdapter.ViewHolder>(ProductComparator) {
     private val set = ConstraintSet()
     private val requestOptions = RequestOptions().placeholder(R.drawable.ic_baseline_image_24)
 
     var onItemClickListener: OnItemClickListener? = null
 
     interface OnItemClickListener {
-        fun onItemClick(item: ProductUIItem, position: Int)
+        fun onItemClick(item: ProductEntity, position: Int)
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(ItemProductsBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false))
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int, payloads: MutableList<Any>) {
+        if (payloads.isNotEmpty()) {
+            val item = getItem(position)
+            holder.bind(item!!)
+        } else {
+            onBindViewHolder(holder, position)
+        }
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
@@ -42,7 +51,7 @@ class ProductPagerAdapter: PagingDataAdapter<ProductUIItem, ProductPagerAdapter.
             }
         }
 
-        fun bind(data: ProductUIItem) {
+        fun bind(data: ProductEntity) {
             binding.cardTitle.text = data.brand
             binding.cardSubtitle.text = "${data.price} ${data.currency}"
 
@@ -67,12 +76,12 @@ class ProductPagerAdapter: PagingDataAdapter<ProductUIItem, ProductPagerAdapter.
         }
     }
 
-    object ProductComparator : DiffUtil.ItemCallback<ProductUIItem>() {
-        override fun areItemsTheSame(oldItem: ProductUIItem, newItem: ProductUIItem): Boolean {
+    object ProductComparator : DiffUtil.ItemCallback<ProductEntity>() {
+        override fun areItemsTheSame(oldItem: ProductEntity, newItem: ProductEntity): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: ProductUIItem, newItem: ProductUIItem): Boolean {
+        override fun areContentsTheSame(oldItem: ProductEntity, newItem: ProductEntity): Boolean {
             return oldItem == newItem
         }
     }

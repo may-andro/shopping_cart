@@ -6,11 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintSet
-import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.mayandro.domain.uimodel.ProductUIItem
+import com.mayandro.local.entity.ProductEntity
 import com.mayandro.shoppingcart.R
 import com.mayandro.shoppingcart.databinding.FragmentProductListBinding
 import com.mayandro.shoppingcart.ui.base.BaseFragment
@@ -97,7 +97,7 @@ class ProductListFragment : BaseFragment<FragmentProductListBinding, ProductList
             }
         }
         productPagerAdapter.onItemClickListener = object : ProductPagerAdapter.OnItemClickListener {
-            override fun onItemClick(item: ProductUIItem, position: Int) {
+            override fun onItemClick(item: ProductEntity, position: Int) {
 
             }
         }
@@ -112,7 +112,7 @@ class ProductListFragment : BaseFragment<FragmentProductListBinding, ProductList
 
         binding.recyclerView.apply {
             setHasFixedSize(true)
-            layoutManager = spannedGridLayoutManager
+            layoutManager = GridLayoutManager(context, spanCount)
             adapter = productPagerAdapter
                 .withLoadStateHeaderAndFooter(
                     header = ProductLoadStateAdapter {

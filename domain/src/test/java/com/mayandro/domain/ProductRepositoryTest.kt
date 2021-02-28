@@ -1,13 +1,11 @@
 package com.mayandro.domain
 
 
-import androidx.paging.PagingSource
-import androidx.paging.PagingState
+import androidx.paging.ExperimentalPagingApi
 import com.mayandro.data.DataSourceFactory
-import com.mayandro.domain.pager.PagerSource
+import com.mayandro.data.pager.product.ProductRemoteMediator
 import com.mayandro.domain.repository.ProductRepository
 import com.mayandro.domain.repository.ProductRepositoryImpl
-import com.mayandro.domain.uimodel.ProductUIItem
 import com.mayandro.remote.RemoteDataSource
 import com.mayandro.remote.model.ProductDetail
 import com.mayandro.utility.network.NetworkStatus
@@ -22,16 +20,17 @@ import org.junit.Test
 class ProductRepositoryTest {
     private val remoteDataSource: RemoteDataSource = mock()
     private val dataSourceFactory: DataSourceFactory = mock()
-
-    private val productPagingSource =  MockPagingSource()
+    @ExperimentalPagingApi
+    private val productRemoteMediator: ProductRemoteMediator = mock()
 
     private lateinit var productRepository: ProductRepository
 
+    @ExperimentalPagingApi
     @Before
     fun setUp() {
         productRepository = ProductRepositoryImpl(
-            dataSourceFactory,
-            productPagingSource
+            productRemoteMediator = productRemoteMediator,
+            dataSourceFactory = dataSourceFactory
         )
     }
 

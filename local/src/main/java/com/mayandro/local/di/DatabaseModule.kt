@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.mayandro.local.LocalDataSource
 import com.mayandro.local.LocalDataSourceImpl
 import com.mayandro.local.dao.ProductDao
+import com.mayandro.local.dao.RemoteKeysDao
 import com.mayandro.local.database.ProductDatabase
 import com.mayandro.local.utils.DbConstants.DATABASE_NAME
 import dagger.Module
@@ -32,11 +33,17 @@ object DatabaseModule {
 
     @Singleton
     @Provides
+    fun provideRemoteKeysDao(db: ProductDatabase): RemoteKeysDao = db.remoteKeysDao()
+
+
+    @Singleton
+    @Provides
     fun provideLocalDataSource(
-        productDao: ProductDao
+        productDao: ProductDao,
+        remoteKeysDao: RemoteKeysDao
     ): LocalDataSource {
         return LocalDataSourceImpl(
-            productDao
+            productDao, remoteKeysDao
         )
     }
 }

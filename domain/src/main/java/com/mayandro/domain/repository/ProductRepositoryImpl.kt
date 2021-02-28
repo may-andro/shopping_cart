@@ -1,38 +1,32 @@
 package com.mayandro.domain.repository
 
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingData
-import androidx.paging.PagingSource
+import androidx.paging.*
 import com.mayandro.data.DataSourceFactory
-import com.mayandro.domain.pager.PagerSource
-import com.mayandro.domain.pager.ProductPagingSource
-import com.mayandro.domain.uimodel.ProductDetailUIItem
-import com.mayandro.domain.uimodel.ProductUIItem
-import com.mayandro.domain.utils.toProductDetailUIItem
+import com.mayandro.data.pager.product.ProductRemoteMediator
+import com.mayandro.local.entity.ProductEntity
 import com.mayandro.remote.model.ProductDetail
-import com.mayandro.utility.PRODUCT_PAGING_PAGE_SIZE
-import com.mayandro.utility.exceptions.NetworkFailureException
 import com.mayandro.utility.network.NetworkStatus
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import java.lang.Exception
 
-class ProductRepositoryImpl (
+class ProductRepositoryImpl @ExperimentalPagingApi constructor(
     private val dataSourceFactory: DataSourceFactory,
-    private val productPagingSource: PagerSource
+    private val productRemoteMediator: ProductRemoteMediator
 ) : ProductRepository{
 
-    override fun getAllProducts(pageSize: Int): Flow<PagingData<ProductUIItem>> {
+    @ExperimentalPagingApi
+    override fun getAllProducts(pageSize: Int): Flow<PagingData<ProductEntity>> {
+        val pageConfig = PagingConfig(
+            pageSize = pageSize,
+            maxSize = 100,
+            enablePlaceholders = false,
+            initialLoadSize = pageSize,
+        )
+
         return Pager(
-            PagingConfig(
-                pageSize = pageSize,
-                maxSize = 100,
-                enablePlaceholders = false,
-                initialLoadSize = pageSize
-            )
-        ) {
-            productPagingSource as ProductPagingSource
+            config = pageConfig,
+            remoteMediator = productRemoteMediator
+        ){
+            dataSourceFactory.retrieveLocalDataStore().getAllPagedProduct()
         }.flow
     }
 

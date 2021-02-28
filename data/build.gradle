@@ -48,6 +48,20 @@ dependencies {
     implementation hiltDependencies.hiltLifecycle
     kapt hiltDependencies.hiltCompiler
 
+    def dbDependencies = rootProject.ext.dbDependencies
+    implementation dbDependencies.room
+    kapt dbDependencies.roomCompiler
+    implementation dbDependencies.roomKtx
+
+    def networkDependencies = rootProject.ext.networkDependencies
+    implementation networkDependencies.gson
+    implementation networkDependencies.loggingInterceptor
+    implementation networkDependencies.retrofit
+    implementation networkDependencies.retrofitConverter
+
+    def pagerDependencies = rootProject.ext.pagerDependencies
+    implementation pagerDependencies.paging
+
     def androidTestDependencies = rootProject.ext.androidTestDependencies
     androidTestImplementation androidTestDependencies.junit
     androidTestImplementation androidTestDependencies.espresso

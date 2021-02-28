@@ -56,6 +56,9 @@ dependencies {
     testImplementation testDependencies.junit
     testImplementation testDependencies.truth
 
+    def pagerDependencies = rootProject.ext.pagerDependencies
+    implementation pagerDependencies.paging
+
     def androidTestDependencies = rootProject.ext.androidTestDependencies
     androidTestImplementation androidTestDependencies.junit
     androidTestImplementation androidTestDependencies.espresso
