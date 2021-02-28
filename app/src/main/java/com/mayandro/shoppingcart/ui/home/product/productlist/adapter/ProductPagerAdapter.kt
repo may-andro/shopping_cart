@@ -12,10 +12,11 @@ import com.bumptech.glide.request.RequestOptions
 import com.mayandro.domain.uimodel.ProductUIItem
 import com.mayandro.shoppingcart.R
 import com.mayandro.shoppingcart.databinding.ItemProductsBinding
+import com.mayandro.utility.extensions.setImage
 
 class ProductPagerAdapter: PagingDataAdapter<ProductUIItem, ProductPagerAdapter.ViewHolder>(ProductComparator) {
     private val set = ConstraintSet()
-    private val requestOptions = RequestOptions().placeholder(R.drawable.ic_baseline_image_24)
+    private val requestOptions = RequestOptions()
 
     var onItemClickListener: OnItemClickListener? = null
 
@@ -48,13 +49,10 @@ class ProductPagerAdapter: PagingDataAdapter<ProductUIItem, ProductPagerAdapter.
 
             binding.cardImage.requestLayout()
 
-            Glide.with(binding.cardImage.context)
-                .setDefaultRequestOptions(requestOptions)
-                .load(data.image)
-                .fitCenter()
-                .thumbnail(0.3f)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(binding.cardImage)
+            binding.cardImage.setImage(
+                data.image,
+                requestOptions
+            )
 
             if(data.width > 0 && data.height > 0) {
                 with(set) {

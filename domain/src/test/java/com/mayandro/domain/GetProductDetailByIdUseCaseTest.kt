@@ -18,15 +18,13 @@ import org.junit.Test
 class GetProductDetailByIdUseCaseTest {
 
     private val productRepository: ProductRepository = mock()
-    private val uiProductDetailMapper: UIProductDetailMapper = mock()
 
     private lateinit var getProductDetailByIdUseCase: GetProductDetailByIdUseCase
 
     @Before
     fun setUp() {
         getProductDetailByIdUseCase = GetProductDetailByIdUseCase(
-            productRepository,
-            uiProductDetailMapper
+            productRepository
         )
     }
 
@@ -70,7 +68,6 @@ class GetProductDetailByIdUseCaseTest {
         val serverResponse = NetworkStatus.Success(productdetail)
 
         runBlocking {
-            whenever(uiProductDetailMapper.mapFromOriginalObject(serverResponse.data!!)).thenReturn(uiproductdetail)
             whenever(productRepository.getProductById(1)).thenReturn(serverResponse)
 
             getProductDetailByIdUseCase.run(param)

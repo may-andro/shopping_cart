@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        android:layout_gravity="center"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/textViewError"
+        style="@style/TextAppearance.AppCompat.Subhead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:layout_margin="32dp"
+        android:textColor="@color/textColorBlack"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        tools:text="Testing text"
+        tools:visibility="visible" />
+
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/motionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:layoutDescription="@xml/fragment_product_detail_land_scene">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="16dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineBottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="16dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="16dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="16dp" />
+
+        <ImageView
+            android:id="@+id/imageProduct"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@null"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/cardProduct"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.5" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cardProduct"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/backgroundGrey"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imageProduct"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/viewScrollIndicator"
+            android:layout_width="6dp"
+            android:layout_height="0dp"
+            android:elevation="8dp"
+            app:cardBackgroundColor="@color/screenBackgroundWhite"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintBottom_toTopOf="@id/guidelineBottom"
+            app:layout_constraintHeight_percent="0.3"
+            app:layout_constraintStart_toStartOf="@id/cardProduct"
+            app:layout_constraintTop_toBottomOf="@id/guidelineTop" />
+
+        <TextView
+            android:id="@+id/productPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:textColor="@color/textColorBlack"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/buttonBack"
+            app:layout_constraintStart_toEndOf="@id/viewScrollIndicator"
+            app:layout_constraintTop_toBottomOf="@id/guidelineTop"
+            app:layout_constraintVertical_bias="0.5"
+            tools:text="50 Euro" />
+
+        <TextView
+            android:id="@+id/productDiscount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:textColor="@color/textColorGrey"
+            app:layout_constraintBottom_toBottomOf="@id/productPrice"
+            app:layout_constraintEnd_toStartOf="@+id/imageSale"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/productPrice"
+            tools:text="50 Euro" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageSale"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="8dp"
+            android:contentDescription="@null"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/productPrice"
+            app:layout_constraintStart_toEndOf="@id/productDiscount"
+            app:layout_constraintTop_toTopOf="@+id/productPrice"
+            app:srcCompat="@drawable/ic_baseline_local_offer_24" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/buttonShare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:foregroundGravity="center"
+            android:src="@drawable/ic_baseline_share_24"
+            app:backgroundTint="#80ffffff"
+            app:elevation="0dp"
+            app:fabSize="mini"
+            app:layout_constraintEnd_toStartOf="@id/guidelineRight"
+            app:layout_constraintTop_toBottomOf="@+id/guidelineTop"
+            app:layout_constraintBottom_toBottomOf="@id/buttonBack"
+            app:pressedTranslationZ="0dp" />
+
+        <TextView
+            android:id="@+id/productName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textColor="@color/textColorBlack"
+            app:layout_constraintEnd_toStartOf="@id/guidelineRight"
+            app:layout_constraintStart_toEndOf="@+id/viewScrollIndicator"
+            app:layout_constraintTop_toBottomOf="@+id/productPrice" />
+
+        <TextView
+            android:id="@+id/textDescriptionLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Description"
+            android:textAppearance="@style/TextAppearance.AppCompat.Menu"
+            android:textColor="@color/textColorBlack"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/guidelineRight"
+            app:layout_constraintStart_toEndOf="@+id/viewScrollIndicator"
+            app:layout_constraintTop_toBottomOf="@+id/productName" />
+
+        <TextView
+            android:id="@+id/productDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:ellipsize="end"
+            android:maxLines="5"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/textColorBlack"
+            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/viewScrollIndicator"
+            app:layout_constraintTop_toBottomOf="@+id/textDescriptionLabel"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="@tools:sample/lorem/random" />
+
+        <TextView
+            android:id="@+id/textColorLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Color"
+            android:textAppearance="@style/TextAppearance.AppCompat.Menu"
+            android:textColor="@color/textColorBlack"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintEnd_toStartOf="@id/guidelineRight"
+            app:layout_constraintStart_toEndOf="@+id/viewScrollIndicator"
+            app:layout_constraintTop_toBottomOf="@+id/productDescription" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/colorList"
+            android:layout_width="48dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintEnd_toStartOf="@id/viewDivider"
+            app:layout_constraintTop_toBottomOf="@+id/buttonFavourite"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/textSizeLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Size"
+            android:visibility="gone"
+            android:textAppearance="@style/TextAppearance.AppCompat.Menu"
+            android:textColor="@color/textColorBlack"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/guidelineRight"
+            app:layout_constraintStart_toEndOf="@+id/viewScrollIndicator"
+            app:layout_constraintTop_toBottomOf="@+id/colorList" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/sizeList"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/colorList"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/guidelineLeft"
+            app:layout_constraintBottom_toTopOf="@id/guidelineBottom" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/buttonCart"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="?android:selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardBackgroundColor="@color/colorPrimaryDark"
+            app:cardCornerRadius="400dp"
+            app:contentPadding="16dp"
+            app:layout_constraintBottom_toTopOf="@id/guidelineBottom"
+            app:layout_constraintEnd_toStartOf="@id/guidelineRight"
+            app:layout_constraintStart_toStartOf="@+id/cardProduct"
+            app:layout_constraintWidth_percent="0.3">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textButtonCart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Add to Cart"
+                android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/textColorWhite" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <View
+            android:id="@+id/viewDivider"
+            android:layout_width="16dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_grey_left_rounded"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/cardProduct"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/buttonFavourite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_baseline_favorite_24"
+            app:backgroundTint="#80ffffff"
+            app:elevation="0dp"
+            app:fabSize="mini"
+            app:layout_constraintEnd_toStartOf="@id/viewDivider"
+            app:layout_constraintTop_toBottomOf="@id/guidelineTop"
+            app:pressedTranslationZ="0dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/buttonBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            app:elevation="0dp"
+            app:fabSize="mini"
+            app:layout_constraintStart_toEndOf="@id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@id/guidelineTop" />
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+</FrameLayout>
+
+
