@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.mayandro.domain.uimodel.ProductUIItem
@@ -98,7 +99,8 @@ class ProductListFragment : BaseFragment<FragmentProductListBinding, ProductList
         }
         productPagerAdapter.onItemClickListener = object : ProductPagerAdapter.OnItemClickListener {
             override fun onItemClick(item: ProductUIItem, position: Int) {
-
+                val bundle = bundleOf("productId" to item.id)
+                findNavController().navigate(R.id.productDetailFragment, bundle)
             }
         }
     }

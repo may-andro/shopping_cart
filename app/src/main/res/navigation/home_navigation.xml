@@ -10,5 +10,19 @@
         android:name="com.mayandro.shoppingcart.ui.home.product.productlist.ProductListFragment"
         android:label="DashboardFragment"
         tools:layout="@layout/fragment_product_list">
+
+        <action
+            android:id="@+id/actionProductDetail"
+            app:destination="@id/productDetailFragment" >
+            <argument
+                android:name="productId"
+                app:argType="integer" />
+        </action>
     </fragment>
+
+    <fragment
+        android:id="@+id/productDetailFragment"
+        android:name="com.mayandro.shoppingcart.ui.home.product.productdetail.ProductDetailFragment"
+        android:label="ProductDetailFragment"
+        tools:layout="@layout/fragment_product_detail"/>
 </navigation>

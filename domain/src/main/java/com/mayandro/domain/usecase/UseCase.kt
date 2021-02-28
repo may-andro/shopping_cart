@@ -15,13 +15,13 @@ abstract class UseCase<in P, O: Any> {
         scope: CoroutineScope,
         param: P,
         onResult: ((O) -> Unit) = {},
-        onFailure: ((Throwable) -> Unit) = {}
+        onFailure: ((String?) -> Unit) = {}
     ) {
         scope.launch(Dispatchers.Main) {
             run(param)
                 .flowOn(Dispatchers.IO)
                 .catch { e ->
-                    onFailure(e)
+                    onFailure(e.message)
                 }
                 .collect {
                     onResult(it)

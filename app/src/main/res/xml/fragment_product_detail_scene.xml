@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        android:id="@+id/productDetailFragmentTransition"
+        app:constraintSetEnd="@layout/fragment_product_detail_end"
+        app:constraintSetStart="@layout/fragment_product_detail">
+
+        <OnSwipe
+            app:dragDirection="dragUp"
+            app:touchAnchorId="@id/cardProduct"
+            app:touchAnchorSide="top" />
+
+        <KeyFrameSet>
+            <KeyAttribute
+                android:alpha="0"
+                app:framePosition="0"
+                app:motionTarget="@id/textColorLabel" />
+
+            <KeyAttribute
+                app:framePosition="85"
+                app:motionTarget="@id/textColorLabel"
+                android:alpha="0.5" />
+
+            <KeyAttribute
+                app:framePosition="70"
+                app:motionTarget="@id/textColorLabel"
+                android:alpha="0" />
+
+            <KeyAttribute
+                app:framePosition="100"
+                app:motionTarget="@id/textColorLabel"
+                android:alpha="1" />
+        </KeyFrameSet>
+
+        <KeyFrameSet>
+            <KeyAttribute
+                android:alpha="0"
+                app:framePosition="0"
+                app:motionTarget="@id/colorList" />
+
+            <KeyAttribute
+                app:framePosition="85"
+                app:motionTarget="@id/colorList"
+                android:alpha="0.5" />
+
+            <KeyAttribute
+                app:framePosition="70"
+                app:motionTarget="@id/colorList"
+                android:alpha="0" />
+
+            <KeyAttribute
+                app:framePosition="100"
+                app:motionTarget="@id/colorList"
+                android:alpha="1" />
+        </KeyFrameSet>
+
+        <KeyFrameSet>
+            <KeyAttribute
+                android:alpha="0"
+                app:framePosition="0"
+                app:motionTarget="@id/textSizeLabel" />
+
+            <KeyAttribute
+                app:framePosition="85"
+                app:motionTarget="@id/textSizeLabel"
+                android:alpha="0.5" />
+
+            <KeyAttribute
+                app:framePosition="70"
+                app:motionTarget="@id/textSizeLabel"
+                android:alpha="0" />
+
+            <KeyAttribute
+                app:framePosition="100"
+                app:motionTarget="@id/textSizeLabel"
+                android:alpha="1" />
+        </KeyFrameSet>
+
+        <KeyFrameSet>
+            <KeyAttribute
+                android:alpha="0"
+                app:framePosition="0"
+                app:motionTarget="@id/sizeList" />
+
+            <KeyAttribute
+                app:framePosition="85"
+                app:motionTarget="@id/sizeList"
+                android:alpha="0.5" />
+
+            <KeyAttribute
+                app:framePosition="70"
+                app:motionTarget="@id/sizeList"
+                android:alpha="0" />
+
+            <KeyAttribute
+                app:framePosition="100"
+                app:motionTarget="@id/sizeList"
+                android:alpha="1" />
+        </KeyFrameSet>
+    </Transition>
+
+
+</MotionScene>
