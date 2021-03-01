@@ -20,4 +20,4 @@ Features Included:
 <img width="478" alt="Screenshot 2021-03-01 at 09 14 32" src="https://user-images.githubusercontent.com/16761273/109470268-78b4b780-7a6f-11eb-9223-68c73e0e2aca.png">
 
 
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/16761273/109470601-f24ca580-7a6f-11eb-8e6d-85d42467985e.gif)
+![ezgif com-gif-maker (2)](https://user-images.githubusercontent.com/16761273/109471657-5ae85200-7a71-11eb-84d4-8431407200b4.gif)
