@@ -18,7 +18,7 @@ class UIProductDetailMapperTest {
 
     @Test
     fun mapFromRemoteMapsData() {
-        val bufferooModel = ProductDetail(
+        val productDetail = ProductDetail(
             id = 1,
             name = "Test",
             image = "Test",
@@ -31,7 +31,7 @@ class UIProductDetailMapperTest {
             brand = "2",
             discountPercentage = 1
         )
-        val bufferooEntity = ProductDetailUIItem(
+        val productDetailUIItem = ProductDetailUIItem(
             id = 1,
             name = "Test",
             image = "Test",
@@ -48,8 +48,8 @@ class UIProductDetailMapperTest {
             type = ""
         )
 
-        assertEquals(bufferooModel.name, bufferooEntity.name)
-        assertEquals(bufferooModel.id, bufferooEntity.id)
+        assertEquals(productDetail.name, productDetailUIItem.name)
+        assertEquals(productDetail.id, productDetailUIItem.id)
     }
 
 }
