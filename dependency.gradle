@@ -19,7 +19,7 @@ ext {
     roomVersion = '2.2.6'
 
     //Hilt
-    hiltVersion = '2.32-alpha'
+    hiltVersion = '2.33-beta'
     hiltViewModelVersion = '1.0.0-alpha03'
 
     //Android Library

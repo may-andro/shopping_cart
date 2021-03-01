@@ -33,7 +33,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"
-        app:layoutDescription="@xml/fragment_product_detail_scene">
+        app:layoutDescription="@xml/fragment_product_detail_scene"
+        tools:visibility="visible">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guidelineTop"
