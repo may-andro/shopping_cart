@@ -1,27 +1,22 @@
 package com.mayandro.domain
 
-
-import androidx.paging.PagingSource
-import androidx.paging.PagingState
 import com.mayandro.data.DataSourceFactory
-import com.mayandro.domain.pager.PagerSource
 import com.mayandro.domain.repository.ProductRepository
 import com.mayandro.domain.repository.ProductRepositoryImpl
-import com.mayandro.domain.uimodel.ProductUIItem
 import com.mayandro.remote.RemoteDataSource
 import com.mayandro.remote.model.ProductDetail
 import com.mayandro.utility.network.NetworkStatus
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.verify
-import com.nhaarman.mockitokotlin2.whenever
+import io.mockk.coEvery
+import io.mockk.coVerify
+import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 
 class ProductRepositoryTest {
-    private val remoteDataSource: RemoteDataSource = mock()
-    private val dataSourceFactory: DataSourceFactory = mock()
+    private val remoteDataSource: RemoteDataSource = mockk()
+    private val dataSourceFactory: DataSourceFactory = mockk()
 
     private val productPagingSource =  MockPagingSource()
 
@@ -54,16 +49,18 @@ class ProductRepositoryTest {
     @Test
     fun getProductDetail() = runBlocking {
         val mockServerData = mockProductDetailNetworkResponse()
-        whenever(remoteDataSource.getProductDetailForId(1)).thenReturn(mockServerData)
-        whenever(dataSourceFactory.retrieveRemoteDataStore()).thenReturn(remoteDataSource)
 
+        //STUB calls
+        coEvery { remoteDataSource.getProductDetailForId(1) } returns mockServerData
+        coEvery { dataSourceFactory.retrieveRemoteDataStore() } returns remoteDataSource
+
+        //Execute the code
         val getProductDetail = productRepository.getProductById(1)
-        assertEquals(getProductDetail, mockServerData)
 
-        verify(dataSourceFactory.retrieveRemoteDataStore(),
-            com.nhaarman.mockitokotlin2.atLeastOnce()
-        ).getProductDetailForId(1)
-        return@runBlocking
+        //Verify
+        coVerify { dataSourceFactory.retrieveRemoteDataStore() }
+
+        assertEquals(getProductDetail, mockServerData)
     }
 }
 

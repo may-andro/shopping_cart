@@ -4,9 +4,9 @@ import com.mayandro.remote.model.ProductDetail
 import com.mayandro.utility.network.NetworkStatus
 import com.mayandro.remote.model.ProductResponse
 import com.mayandro.remote.retrofit.RetrofitApi
-import com.mayandro.remote.utils.safeApiCall
+import com.mayandro.remote.utils.ApiResponseHandler.safeApiCall
 
-class RemoteDataSourceImpl(
+internal class RemoteDataSourceImpl(
     private val retrofit: RetrofitApi
 ): RemoteDataSource {
     override suspend fun getProductList(

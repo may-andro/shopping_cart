@@ -52,7 +52,13 @@ android {
         exclude "META-INF/AL2.0"
         exclude "META-INF/LGPL2.1"
     }
-
+    testOptions {
+        animationsDisabled = true
+        unitTests {
+            includeAndroidResources = true
+            returnDefaultValues = true
+        }
+    }
 }
 
 dependencies {
@@ -117,35 +123,28 @@ dependencies {
     implementation hiltDependencies.hiltLifecycle
     kapt hiltDependencies.hiltCompiler
 
+    def testDependencies = rootProject.ext.testDependencies
+    testImplementation testDependencies.junit
+    testImplementation testDependencies.truth
+    testImplementation testDependencies.mockk
 
-    testImplementation "io.mockk:mockk:1.10.6"
-    androidTestImplementation "io.mockk:mockk-android:1.10.6"
-
-    // Hilt testing
-    androidTestImplementation "com.google.dagger:hilt-android-testing:2.33-beta"
-    kaptAndroidTest "com.google.dagger:hilt-android-compiler:2.32-alpha"
-    kaptAndroidTest "androidx.hilt:hilt-compiler:1.0.0-alpha03"
+    def androidTestDependencies = rootProject.ext.androidTestDependencies
+    androidTestImplementation androidTestDependencies.junit
+    androidTestImplementation androidTestDependencies.mockk
+    androidTestImplementation androidTestDependencies.hilt
+    kaptAndroidTest androidTestDependencies.hiltComplier
+    androidTestImplementation androidTestDependencies.espresso
+    androidTestImplementation androidTestDependencies.androidxCoreTesting
+    androidTestImplementation androidTestDependencies.coroutineTest
+    androidTestImplementation androidTestDependencies.truth
 
     // Local Unit Tests
     implementation "androidx.test:core:1.3.0"
-    testImplementation "junit:junit:4.13.2"
     testImplementation "org.hamcrest:hamcrest-all:1.3"
     testImplementation "androidx.arch.core:core-testing:2.1.0"
-    testImplementation "org.robolectric:robolectric:4.4"
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.1"
-    testImplementation "com.google.truth:truth:1.1"
 
     // Instrumented Unit Tests
-    androidTestImplementation "junit:junit:4.13.2"
-    androidTestImplementation "com.linkedin.dexmaker:dexmaker-mockito:2.12.1"
-    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.1"
-    androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
-    androidTestImplementation "com.google.truth:truth:1.1"
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     debugImplementation "androidx.fragment:fragment-testing:1.3.0"
 
-    androidTestImplementation ("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0") {
-        exclude group: "org.mockito", module: "mockito-core"
-    }
 }

@@ -3,7 +3,7 @@ package com.mayandro.local
 import com.mayandro.local.dao.ProductDao
 import com.mayandro.local.entity.ProductEntity
 
-class LocalDataSourceImpl(
+internal class LocalDataSourceImpl(
     private val productDao: ProductDao
 ): LocalDataSource {
     override suspend fun insertProductEntity(productEntity: ProductEntity) {

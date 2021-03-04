@@ -4,12 +4,14 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import com.mayandro.domain.repository.ProductRepository
 import com.mayandro.domain.usecase.GetAllProductUseCase
-import com.nhaarman.mockitokotlin2.*
+import io.mockk.every
+import io.mockk.mockk
+import io.mockk.verify
 import org.junit.Before
 import org.junit.Test
 
 class GetAllProductUseCaseTest {
-    private val productRepository: ProductRepository = mock()
+    private val productRepository: ProductRepository = mockk()
 
     private lateinit var getAllProductUseCase: GetAllProductUseCase
 
@@ -21,7 +23,7 @@ class GetAllProductUseCaseTest {
     }
 
     @Test
-    fun getProductList() {
+    fun testGetAllProductUseCaseTest() {
         val param = GetAllProductUseCase.Param(
             pageSize = 1
         )
@@ -34,10 +36,13 @@ class GetAllProductUseCaseTest {
         }
         val mockServerData = pager.flow
 
-        whenever(productRepository.getAllProducts(1)).thenReturn(mockServerData)
-        getAllProductUseCase.invoke(param, {})
+        //STUB calls
+        every { productRepository.getAllProducts(1) } returns mockServerData
 
-        verify(productRepository).getAllProducts(1)
-        verifyNoMoreInteractions(productRepository)
+        //Execute the code
+        val result = getAllProductUseCase.invoke(param, {})
+
+        //Verify
+        verify { productRepository.getAllProducts(1) }
     }
 }
