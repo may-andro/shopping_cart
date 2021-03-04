@@ -56,14 +56,5 @@ dependencies {
     def testDependencies = rootProject.ext.testDependencies
     testImplementation testDependencies.junit
     testImplementation testDependencies.truth
-
-    def androidTestDependencies = rootProject.ext.androidTestDependencies
-    androidTestImplementation androidTestDependencies.junit
-    androidTestImplementation androidTestDependencies.espresso
-    androidTestImplementation androidTestDependencies.hilt
-    kaptAndroidTest androidTestDependencies.hiltComplier
-
-    androidTestImplementation androidTestDependencies.androidxCoreTesting
-    androidTestImplementation androidTestDependencies.coroutineTest
-    androidTestImplementation androidTestDependencies.truth
+    testImplementation testDependencies.mockk
 }

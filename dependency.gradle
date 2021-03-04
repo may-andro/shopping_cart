@@ -108,9 +108,10 @@ ext {
     ]
 
     testDependencies = [
-            junit:             "junit:junit:${jUnitVersion}",
-            truth:             "com.google.truth:truth:${truthVersion}",
+            junit:              "junit:junit:${jUnitVersion}",
+            truth:              "com.google.truth:truth:${truthVersion}",
             mockito:            "com.nhaarman.mockitokotlin2:mockito-kotlin:${mockitoKotlinVersion}",
+            mockk:              "io.mockk:mockk:1.10.6",
     ]
 
     androidTestDependencies = [
@@ -120,7 +121,8 @@ ext {
             coroutineTest:         "org.jetbrains.kotlinx:kotlinx-coroutines-test:${coroutinesVersion}",
             truth:                 "com.google.truth:truth:${truthVersion}",
             hilt:                  "com.google.dagger:hilt-android-testing:2.33-beta",
-            hiltComplier:          "com.google.dagger:hilt-android-compiler:2.28-alpha",
+            hiltComplier:          "com.google.dagger:hilt-android-compiler:2.32-alpha",
+            mockk:                 "io.mockk:mockk-android:1.10.6"
     ]
 
 }
