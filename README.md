@@ -11,6 +11,7 @@ Features Included:
 7. Paging 3
 8. Retrofit and Room
 9. Orientation Haneling
+10. mockk unit testing
 
 
 ## Developed UI
