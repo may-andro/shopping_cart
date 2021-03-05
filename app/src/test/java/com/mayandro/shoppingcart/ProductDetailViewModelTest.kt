@@ -9,61 +9,62 @@ import com.mayandro.utility.network.NetworkStatus
 import io.mockk.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.test.setMain
 import org.junit.Assert.assertEquals
-import kotlinx.coroutines.test.resetMain
 import org.junit.*
+import com.mayandro.domain.repository.ProductRepositoryImpl
 
 class ProductDetailViewModelTest {
-
-    private lateinit var viewModel: ProductDetailViewModel
-
-    private val getProductDetailByIdUseCase = mockk<GetProductDetailByIdUseCase>()
-
-    private lateinit var productDetailObserver: Observer<NetworkStatus<ProductDetail>>
-
-    private val productDetail = ProductDetail(
-        id = 0,
-        name = "test",
-        description = "test",
-        brand = "",
-        price = 2,
-        currency = "",
-        discountPercentage = 2,
-        image = "",
-        stock = 2,
-        _link = "",
-        _type = ""
-    )
-    private val successResource = NetworkStatus.Success(productDetail)
-    private val validParam = GetProductDetailByIdUseCase.Param(1)
 
     @Rule
     @JvmField
     val instantExecutorRule = InstantTaskExecutorRule()
 
-    @ObsoleteCoroutinesApi
-    private val mainThreadSurrogate = newSingleThreadContext("UI thread")
+    private val repository = mockk<ProductRepositoryImpl>()
+    private val getProductDetailByIdUseCase = spyk(GetProductDetailByIdUseCase(repository))
+
+    private lateinit var viewModel: ProductDetailViewModel
 
     @ExperimentalCoroutinesApi
     @ObsoleteCoroutinesApi
     @Before
     fun setup() {
-        Dispatchers.setMain(mainThreadSurrogate)
-        productDetailObserver = mockk()
         viewModel = ProductDetailViewModel(getProductDetailByIdUseCase)
     }
 
+    private fun createProductDetailObserver(): Observer<NetworkStatus<ProductDetail>> = spyk(Observer { })
+
     @ExperimentalCoroutinesApi
     @Test
-    fun fetchProductTest() = runBlocking {
-        coEvery { getProductDetailByIdUseCase.run(validParam) } returns  (flow { emit(successResource) })
+    fun fetchProductTest() {
+        val productDetail = ProductDetail(
+            id = 0,
+            name = "test",
+            description = "test",
+            brand = "",
+            price = 2,
+            currency = "",
+            discountPercentage = 2,
+            image = "",
+            stock = 2,
+            _link = "",
+            _type = ""
+        )
+        val successResource = NetworkStatus.Success(productDetail)
+        val validParam = GetProductDetailByIdUseCase.Param(1)
+        val resultFlow = flow { emit(successResource) }
 
-        viewModel.productDetailLiveData.observeForever {
-            assertEquals(it, successResource)
-        }
+        val mockedObserver = createProductDetailObserver()
+        viewModel.productDetailLiveData.observeForever(mockedObserver)
 
+        //STUB calls
+        coEvery { repository.getProductById(validParam.id) } returns successResource
+        coEvery { getProductDetailByIdUseCase.run(validParam) } returns resultFlow
+        //Execute the code
         viewModel.getProductDetail(validParam.id)
+        //Verify
+        //verify { mockedObserver.onChanged(successResource) }
+        val status = viewModel.productDetailLiveData.getOrAwaitValue(time = 30)
+        assertEquals(status, successResource)
     }
 
     @ObsoleteCoroutinesApi
@@ -71,7 +72,5 @@ class ProductDetailViewModelTest {
     @After
     fun tearDown() {
         unmockkAll()
-        Dispatchers.resetMain() // reset main dispatcher to the original Main dispatcher
-        mainThreadSurrogate.close()
     }
 }
