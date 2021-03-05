@@ -32,6 +32,10 @@ abstract class BaseFragment<B : ViewBinding, VM : ViewModel>() : Fragment(){
 
     abstract fun getViewBinding(): B
 
+    fun clearDialogMessage() {
+        dialogUtils.dismissDialog()
+    }
+
     fun showDialogMessage(
         title: String,
         message: String,

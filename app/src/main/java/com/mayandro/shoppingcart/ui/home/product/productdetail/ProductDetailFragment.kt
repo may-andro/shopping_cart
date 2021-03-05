@@ -60,7 +60,7 @@ class ProductDetailFragment: BaseFragment<FragmentProductDetailBinding, ProductD
 
         val productId = arguments?.getInt("productId") ?: return
 
-        viewModel.getProductDetail(productId)
+        if(savedInstanceState == null) viewModel.getProductDetail(productId)
 
         setColorList()
         setSizeList()
@@ -214,5 +214,10 @@ class ProductDetailFragment: BaseFragment<FragmentProductDetailBinding, ProductD
                 findNavController().popBackStack()
             }
         )
+    }
+
+    override fun onDestroyView() {
+        clearDialogMessage()
+        super.onDestroyView()
     }
 }
