@@ -10,7 +10,7 @@ Features Included:
 6. Coroutines and Flow
 7. Paging 3
 8. Retrofit and Room
-9. Orientation Haneling
+9. Orientation Handeling
 10. mockk unit testing
 
 
