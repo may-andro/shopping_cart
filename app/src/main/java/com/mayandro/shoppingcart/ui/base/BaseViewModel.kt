@@ -11,6 +11,7 @@ abstract class BaseViewModel<VI: ViewInteractor>: ViewModel() {
 
     override fun onCleared() {
         viewModelScope.coroutineContext.cancelChildren()
+        viewInteractor =null
         super.onCleared()
     }
 }

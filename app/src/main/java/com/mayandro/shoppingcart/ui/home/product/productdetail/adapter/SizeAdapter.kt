@@ -49,7 +49,7 @@ class SizeAdapter() : RecyclerView.Adapter<SizeAdapter.ViewHolder>(), AutoUpdata
 
         init {
             binding.root.setOnClickListener {
-                onItemClickListener?.onDropDownClick(dataSet[adapterPosition], adapterPosition)
+                onItemClickListener?.onDropDownClick(dataSet[absoluteAdapterPosition], absoluteAdapterPosition)
             }
         }
 

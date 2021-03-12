@@ -11,7 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.mayandro.domain.uimodel.ProductUIItem
+import com.mayandro.remote.model.ProductItem
 import com.mayandro.shoppingcart.R
 import com.mayandro.shoppingcart.databinding.FragmentProductListBinding
 import com.mayandro.shoppingcart.ui.base.BaseFragment
@@ -98,7 +98,7 @@ class ProductListFragment : BaseFragment<FragmentProductListBinding, ProductList
             }
         }
         productPagerAdapter.onItemClickListener = object : ProductPagerAdapter.OnItemClickListener {
-            override fun onItemClick(item: ProductUIItem, position: Int) {
+            override fun onItemClick(item: ProductItem, position: Int) {
                 val bundle = bundleOf("productId" to item.id)
                 findNavController().navigate(R.id.productDetailFragment, bundle)
             }
